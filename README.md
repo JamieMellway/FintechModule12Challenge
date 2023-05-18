@@ -10,32 +10,34 @@ We did two analyses of the data.  The first one was a logistic regression model 
 
 * Machine Learning Model 1:
   * Balanced Accuracy Score: 0.9520479254722232
-  * True Positive: 18663
-  * False Positive: 56
-  * False Negative: 102
-  * True Negative: 563
-  * Healthy Loan Precision: 1.00 
-  * Healthy Loan Recall: 0.99
-  * Healthy Loan F1 Score: 1.00
-  * High-Risk Loan Precision: 0.85
-  * High-Risk Loan Recall: 0.91
-  * High-Risk Loan F1 Score: 0.88
+  * True Negative: 18663
+  * False Negative: 56
+  * False Positive: 102
+  * True Positive: 563
+  * Accuracy [(TP+TN)/(TP+TN+FP+FN)]: 0.99
+  * Healthy Loan Precision [TN/(TN+FN)]: 1.00 
+  * Healthy Loan Recall [TN/(TN+FP)]: 0.99
+  * High-Risk Loan Precision [TP/(TP+FP)]: 0.85
+  * High-Risk Loan Recall [TP/(TP+FN)]: 0.91
 
 * Machine Learning Model 2:
   * Balanced Accuracy Score: 0.9947308560359689
-  * True Positive: 55964
-  * False Positive: 286
-  * False Negative: 307
-  * True Negative: 55985
-  * Healthy Loan Precision: 0.99 
-  * Healthy Loan Recall: 0.99
-  * Healthy Loan F1 Score: 0.99
-  * High-Risk Loan Precision: 0.99
-  * High-Risk Loan Recall: 0.99
-  * High-Risk Loan F1 Score: 0.99
+  * True Negative: 55964
+  * False Negative: 286
+  * False Positive: 307
+  * True Positive: 55985
+  * Accuracy [(TP+TN)/(TP+TN+FP+FN)]: 0.99
+  * Healthy Loan Precision [TN/(TN+FN)]: 0.99 
+  * Healthy Loan Recall [TN/(TN+FP)]: 0.99
+  * High-Risk Loan Precision [TP/(TP+FP)]: 0.99
+  * High-Risk Loan Recall [TP/(TP+FN)]: 0.99
 
 ## Summary
 
-The second model performed much better.  Oversampling the data fixed the issues with the low precision of the first model (0.99 versus 0.85).   Oversampling is recommended for such imbalanced data.
+The second model performed much better.  Oversampling the data fixed the issues with its high risk predictions.   Oversampling is recommended for such imbalanced data.
 
-Giving out a high-risk loan is much worse than failing to grant a healthy loan.  This means that we are more concerned with False Positives than we are with False Negatives.  We want to minimize False Positives and so we want to maximize Precision. Precision here is more important than Recall.  Since the second model had a precision of 0.99 versus the first model's 0.85 precision, we recommend the second model.
+Giving out a high-risk loan is much worse than failing to grant a healthy loan.  This means that we are more concerned with False Negatives than we are with False Positives although both are important.  We want to minimize False Negatives and so we want to maximize Healthy Loan Precision and High-Risk Loan Recall.  Healthy Loan Precision values were similar with the two models (1.00 versus 0.99).  High-Risk Loan Recall values improved from the first model (0.91) to the second model (0.99).
+
+It is also nice to see that the second model had a High-Risk Loan Precision of 0.99 versus the first model's 0.85 precision.
+
+Between the two models, the second model is recommended.
